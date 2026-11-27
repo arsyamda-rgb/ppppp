@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.veyrion</groupId>
+    <artifactId>veyrion-wardrobe</artifactId>
+    <version>0.2.0</version>
+    <packaging>jar</packaging>
+    <name>VeyrionWardrobe</name>
+    <description>Wardrobe and Aether Mirror for the Veyrion server.</description>
+
+    <properties>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <paper.version>1.21.1-R0.1-SNAPSHOT</paper.version>
+        <skinsrestorer.version>15.12.6</skinsrestorer.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>codemc</id>
+            <url>https://repo.codemc.org/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- Everything below is provided by the server: compile-only, never shaded. -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>${paper.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Verified against the SkinsRestorer 15.12.6 jar. Do not shade or relocate it. -->
+        <dependency>
+            <groupId>net.skinsrestorer</groupId>
+            <artifactId>skinsrestorer-api</artifactId>
+            <version>${skinsrestorer.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- VeyrionCharacter: run `mvn install` in the VeyrionCharacter project first (it now has has/withdraw/previews). -->
+        <dependency>
+            <groupId>com.veyrion</groupId>
+            <artifactId>veyrion-character</artifactId>
+            <version>0.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- ItemsAdder API (needed from Stage 3). NOT added yet: its Maven coordinates and the 4.0.3 API have not
+             been verified. Add it together with the first ItemsAdder code. -->
+    </dependencies>
+
+    <build>
+        <finalName>VeyrionWardrobe-${project.version}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>plugin.yml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>plugin.yml</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <release>${java.version}</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

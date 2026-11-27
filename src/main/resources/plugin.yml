@@ -1,0 +1,9 @@
+name: VeyrionWardrobe
+version: '${project.version}'
+main: com.veyrion.wardrobe.VeyrionWardrobe
+api-version: '1.21'
+description: Wardrobe and Aether Mirror for the Veyrion server.
+authors: [Veyrion]
+# All three are hard dependencies: Paper loads them first and refuses to load this plugin without them.
+# DependencyGuard then checks versions and APIs and disables the plugin with a clear message if one does not fit.
+depend: [VeyrionCharacter, ItemsAdder, SkinsRestorer]

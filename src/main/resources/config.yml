@@ -1,0 +1,39 @@
+# VeyrionWardrobe
+
+outfits:
+  # How many outfits one player can keep (1-100).
+  max-per-player: 10
+  # Longest outfit name (1-32). Letters, digits, space and _ - ' . only.
+  name-max-length: 24
+
+skins:
+  # Seconds a player must wait between two skin processing requests (MineSkin is rate limited). 0 = none.
+  cooldown-seconds: 20
+  # Seconds to wait for SkinsRestorer to process a URL before giving up (5-120).
+  timeout-seconds: 40
+  # Hosts a skin URL may come from. Empty = any public https host.
+  allowed-hosts: []
+  # Skins processed at the same time, server-wide (1-8). More requests get "busy, try again".
+  max-concurrent: 2
+  # Check the image before SkinsRestorer gets it: reachable, a PNG, 64x64 or 64x32, not too big.
+  probe-image: true
+  # Biggest image the check accepts, in KB (16-4096).
+  max-image-kb: 1024
+  # Apply the active outfit again when its owner joins. SkinsRestorer already remembers the skin, so leave this off
+  # unless the skin is lost on join.
+  reapply-active-on-join: false
+  cache:
+    # Processed skins remembered (also across restarts). The least recently used one goes first (50-100000).
+    max-entries: 2000
+    # Forget a skin nobody used for this many days. 0 = never.
+    expire-days: 90
+
+mirror:
+  # A player further than this many blocks from the mirror is moved out of the wardrobe (2-32).
+  max-use-distance: 6.0
+
+preview:
+  # Show the 3D character in front of the mirror (needs ProtocolLib through VeyrionCharacter).
+  enabled: true
+  # Ticks to wait after a skin is applied before the mirror preview is redrawn (0-40).
+  refresh-delay-ticks: 2
