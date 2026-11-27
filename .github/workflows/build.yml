@@ -33,10 +33,10 @@ jobs:
           cache: maven
 
       - name: Build and install VeyrionCharacter API
-        run: mvn --batch-mode --no-transfer-progress -f VeyrionCharacter/pom.xml clean install
+        run: mvn --batch-mode --no-transfer-progress -f VeyrionCharacter/pom.xml install
 
       - name: Build VeyrionWardrobe
-        run: mvn --batch-mode --no-transfer-progress clean package
+        run: mvn --batch-mode --no-transfer-progress package
 
       - name: Upload VeyrionWardrobe JAR
         uses: actions/upload-artifact@v6
