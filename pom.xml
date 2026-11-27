@@ -15,7 +15,7 @@
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <paper.version>1.21.1-R0.1-SNAPSHOT</paper.version>
-        <skinsrestorer.version>15.12.6</skinsrestorer.version>
+        <skinsrestorer.version>15.9.0</skinsrestorer.version>
     </properties>
 
     <repositories>
@@ -38,7 +38,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Verified against the SkinsRestorer 15.12.6 jar. Do not shade or relocate it. -->
+        <!-- SkinsRestorer 15.9.0 API is compiled for Java 21. Keep this compile-only; do not shade or relocate it. -->
         <dependency>
             <groupId>net.skinsrestorer</groupId>
             <artifactId>skinsrestorer-api</artifactId>
